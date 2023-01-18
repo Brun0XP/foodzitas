@@ -2,7 +2,9 @@ package br.edu.ifpb.foodzitas.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -10,9 +12,15 @@ import java.util.Set;
 public class Receita {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String nome;
+
+    private String imagem;
+
+    @CreationTimestamp
+    private LocalDateTime dataCriacao;
 
     @ManyToMany()
     @JoinTable(
